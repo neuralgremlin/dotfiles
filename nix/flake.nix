@@ -42,7 +42,11 @@
       nix.settings.experimental-features = "nix-command flakes";
 
       # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
+      programs.zsh = {
+        enable = true; # default shell on catalina
+        enableCompletion = true; # default true
+        enableSyntaxHighlighting = true; # default false
+      }
       # programs.fish.enable = true;
 
       # Set Git commit hash for darwin-version.
