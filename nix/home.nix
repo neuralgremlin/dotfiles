@@ -20,15 +20,14 @@
   ];
 
   home.file = {
-    #".zshrc".source = ~/dotfiles/zshrc/.zshrc;
+    ".zshrc".source = ../zsh/.zshrc;
     #".config/wezterm".source = ~/dotfiles/wezterm;
     #".config/skhd".source = ~/dotfiles/skhd;
-    #".config/starship".source = ~/dotfiles/starship;
+    ".config/starship".source = ../starship;
     #".config/zellij".source = ~/dotfiles/zellij;
-    #".config/nvim".source = ~/dotfiles/nvim;
-    #".config/nix".source = ~/dotfiles/nix;
-    #".config/nix-darwin".source = ~/dotfiles/nix-darwin;
-    #".config/tmux".source = ~/dotfiles/tmux;
+    ".config/nvim".source = ../nvim;
+    ".config/nix".source = ../nix;
+    ".config/tmux".source = ../tmux;
   };
 
   # Let Home Manager install and manage itself.

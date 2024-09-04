@@ -14,12 +14,15 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ pkgs.vim
+      environment.systemPackages =[ 
+          pkgs.bat
+          pkgs.zoxide
+          pkgs.fzf
+          pkgs.yazi
           pkgs.age
           pkgs.portal
-          pkgs.yazi
-          pkgs.zoxide
+          pkgs.starship
+          pkgs.neovim
         ];
 
       # Auto upgrade nix package and the daemon service.
