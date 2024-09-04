@@ -46,6 +46,7 @@
         enable = true; # default shell on catalina
         enableCompletion = true; # default true
         enableSyntaxHighlighting = true; # default false
+        autosuggestion.enable = true;
       };
       # programs.fish.enable = true;
 
