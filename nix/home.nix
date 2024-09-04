@@ -25,7 +25,7 @@
     #".config/skhd".source = ~/dotfiles/skhd;
     ".config/starship".source = ../starship;
     #".config/zellij".source = ~/dotfiles/zellij;
-    ".config/nvim".source = ../nvim;
+    #".config/nvim".source = ../nvim;
     ".config/nix".source = ../nix;
     ".config/tmux".source = ../tmux;
   };
