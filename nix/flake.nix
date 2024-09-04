@@ -14,15 +14,24 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages =[ 
-          pkgs.bat
-          pkgs.zoxide
-          pkgs.fzf
-          pkgs.yazi
+      environment.systemPackages =[
           pkgs.age
+          pkgs.bat
+          pkgs.fzf
+          pkgs.git
           pkgs.portal
+          pkgs.ripgrep
+          pkgs.tmux
+          pkgs.zoxide
+          pkgs.docker
+          pkgs.docker-compose
+          pkgs.docker-credential-helpers
+          pkgs.colima
           pkgs.starship
           pkgs.neovim
+          pkgs.lazydocker
+          pkgs.lazygit
+          pkgs.yazi
         ];
 
       # Auto upgrade nix package and the daemon service.
