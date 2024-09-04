@@ -46,7 +46,7 @@
         enable = true; # default shell on catalina
         enableCompletion = true; # default true
         enableSyntaxHighlighting = true; # default false
-      }
+      };
       # programs.fish.enable = true;
 
       # Set Git commit hash for darwin-version.
