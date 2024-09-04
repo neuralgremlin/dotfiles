@@ -46,7 +46,7 @@
         enable = true; # default shell on catalina
         enableCompletion = true; # default true
         enableSyntaxHighlighting = true; # default false
-        autosuggestion.enable = true;
+        #autosuggestion.enable = true; # Not exist in system context. Will try to fix using home manager
       };
       # programs.fish.enable = true;
 
