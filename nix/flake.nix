@@ -58,6 +58,15 @@
       system.defaults = {
         screencapture.location = "~/Pictures/screenshots";
       };
+
+      homebrew = {
+        enable = true;
+
+        casks = [
+          #"obsidian"
+          "wezterm"
+        ];
+      };
     };
   in
   {
