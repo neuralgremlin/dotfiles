@@ -17,6 +17,12 @@
   home.stateVersion = "24.05";
   home.packages = [
       pkgs.cowsay
+      pkgs.starship
+      pkgs.neovim
+      pkgs.lazydocker
+      pkgs.lazygit
+      pkgs.yazi
+      pkgs.portal
   ];
 
   home.file = {
@@ -26,8 +32,8 @@
     ".config/starship".source = ../starship;
     #".config/zellij".source = ~/dotfiles/zellij;
     #".config/nvim".source = ../nvim;
-    ".config/nix".source = ../nix;
     ".config/tmux".source = ../tmux;
+    ".config/pypoetry".source = ../pypoetry;
   };
 
   # Let Home Manager install and manage itself.
@@ -38,6 +44,7 @@
     enableZshIntegration = true;
     globalConfig = {
       tools ={
+        go = "1.23";
         node = "20";
         python = "3.11";
       };

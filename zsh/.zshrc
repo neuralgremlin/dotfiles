@@ -5,12 +5,13 @@ export POETRY_CONFIG_DIR=~/.config/pypoetry
 export POETRY_DATA_DIR=~/.local/share/pypoetry
 export POETRY_CACHE_DIR=~/.cache/pypoetry
 
-#export EDITOR=/opt/homebrew/bin/nvim
+export EDITOR=code
 
 #alias la=tree
-#alias cat=bat
+alias cat=bat
 
 # Dirs
+alias la="ls -la"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

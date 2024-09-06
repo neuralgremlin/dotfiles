@@ -19,18 +19,12 @@
           pkgs.bat
           pkgs.fzf
           pkgs.git
-          pkgs.portal
           pkgs.ripgrep
           pkgs.zoxide
           pkgs.docker
           pkgs.docker-compose
           pkgs.docker-credential-helpers
           pkgs.colima
-          pkgs.starship
-          pkgs.neovim
-          pkgs.lazydocker
-          pkgs.lazygit
-          pkgs.yazi
         ];
 
       # Auto upgrade nix package and the daemon service.
