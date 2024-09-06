@@ -21,7 +21,6 @@
           pkgs.git
           pkgs.portal
           pkgs.ripgrep
-          pkgs.tmux
           pkgs.zoxide
           pkgs.docker
           pkgs.docker-compose

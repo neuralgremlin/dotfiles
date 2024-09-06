@@ -32,4 +32,35 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+    globalConfig = {
+      tools ={
+        node = "20";
+        python = "3.11";
+      };
+    };
+  };
+
+  programs.poetry = {
+    enable = true;
+  };
+
+  programs.ruff = {
+    enable = true;
+    settings = {
+      line-length = 100;
+      lint = {
+        select = [ "E4" "E7" "E9" "F" ];
+        ignore = [ ];
+      };
+    };
+  };
+
+  programs.tmux = {
+    enable = true;
+  };
+
 }
