@@ -28,7 +28,7 @@
   home.file = {
     ".zshrc".source = ../zsh/.zshrc;
     ".zprofile".source = ../zsh/.zprofile;
-    #".config/wezterm".source = ~/dotfiles/wezterm;
+    ".config/wezterm".source = ~/dotfiles/wezterm;
     #".config/skhd".source = ~/dotfiles/skhd;
     ".config/starship".source = ../starship;
     #".config/zellij".source = ~/dotfiles/zellij;
