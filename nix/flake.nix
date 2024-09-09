@@ -63,7 +63,7 @@
         enable = true;
 
         casks = [
-          #"obsidian"
+          "obsidian"
           "wezterm"
         ];
       };
