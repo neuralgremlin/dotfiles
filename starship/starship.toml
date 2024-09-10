@@ -1,9 +1,37 @@
-add_newline = false
+#add_newline = false
 # A minimal left prompt
-format = """$directory$character"""
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$lua\
+$python\
+$golang\
+$gcloud\
+$docker_context\
+$jobs\
+$cmd_duration\
+$line_break\
+$username\
+$sudo\
+$character"""
 palette = "catppuccin_mocha"
-# move the rest of the prompt to the right
-right_format = """$all"""
+
+[fill]
+symbol = " "
+
+[gcloud]
+format = """on [$symbol$active]($style) """
+
+[sudo]
+disabled = false
+format = '[$symbol]($style)'
+symbol = '🧙'
+
+[username]
+show_always = false
+format = '[$user]($style) '
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
