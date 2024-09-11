@@ -65,6 +65,7 @@
         casks = [
           "obsidian"
           "wezterm"
+	  "visual-studio-code"
         ];
       };
     };
