@@ -25,6 +25,7 @@
           pkgs.docker-compose
           pkgs.docker-credential-helpers
           pkgs.colima
+          pkgs.uv
         ];
 
       # Auto upgrade nix package and the daemon service.
