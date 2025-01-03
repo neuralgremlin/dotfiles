@@ -26,7 +26,6 @@
           pkgs.docker-credential-helpers
           pkgs.colima
           pkgs.uv
-          pkgs.ghostty
         ];
 
       # Auto upgrade nix package and the daemon service.
@@ -67,7 +66,8 @@
         casks = [
           "obsidian"
           "wezterm"
-	  "visual-studio-code"
+          "visual-studio-code"
+          "ghostty"
         ];
       };
     };
