@@ -28,7 +28,7 @@
   home.file = {
     ".zshrc".source = ../zsh/.zshrc;
     ".zprofile".source = ../zsh/.zprofile;
-    ".config/wezterm".source = ../wezterm;
+    #".config/wezterm".source = ../wezterm;
     #".config/skhd".source = ~/dotfiles/skhd;
     ".config/starship".source = ../starship;
     #".config/zellij".source = ~/dotfiles/zellij;
@@ -52,10 +52,6 @@
     };
   };
 
-  programs.poetry = {
-    enable = true;
-  };
-
   programs.ruff = {
     enable = true;
     settings = {
@@ -66,9 +62,4 @@
       };
     };
   };
-
-  programs.tmux = {
-    enable = true;
-  };
-
 }
