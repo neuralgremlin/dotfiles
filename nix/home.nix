@@ -34,7 +34,7 @@
     #".config/zellij".source = ~/dotfiles/zellij;
     #".config/nvim".source = ../nvim;
     ".config/tmux".source = ../tmux;
-    ".config/pypoetry".source = ../pypoetry;
+    ".config/pypoetry/config.toml".source = ../pypoetry/config.toml;
   };
 
   # Let Home Manager install and manage itself.
