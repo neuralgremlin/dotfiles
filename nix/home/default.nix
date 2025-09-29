@@ -24,8 +24,8 @@ in
   home.packages = with pkgs; [
     uv
     git jq fd
-    bat ripgrep fzf lazygit yazi neovim
-    nodejs_20           # npm included
+    bat ripgrep fzf
+    nodejs_24           # npm included
     rustup              # cargo via rustup under ~/.cargo
   ] ++ lib.optionals isLinux [
     wl-clipboard
@@ -51,12 +51,14 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    # Make `brew` available in shells on macOS
-    loginExtra = lib.optionalString isDarwin ''
-      if [ -x /opt/homebrew/bin/brew ]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      fi
-    '';
+    loginExtra = "";
+    
+    #OPTIONAL: Make `brew` available in shells on macOS if not handled via nix-darwin
+    #loginExtra = lib.optionalString isDarwin ''
+    #  if [ -x /opt/homebrew/bin/brew ]; then
+    #    eval "$(/opt/homebrew/bin/brew shellenv)"
+    #  fi
+    #'';
 
     initExtra = ''
       eval "$(starship init zsh)"
