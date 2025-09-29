@@ -1,5 +1,5 @@
 {
-  description = "Pedro's macOS (nix-darwin) + Arch Linux (HM-only) flake";
+  description = "My macOS (nix-darwin) + Arch Linux (HM-only) flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -13,6 +13,12 @@
 
   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager, ... }:
   let
+    # Get the calling user from environment (impure)
+    currentUser =
+      let su = builtins.getEnv "SUDO_USER";
+          u  = builtins.getEnv "USER";
+      in if su != "" then su else u;
+
     pkgsFor = system: import nixpkgs { inherit system; config.allowUnfree = true; };
 
     # Shared macOS base; keep only true system-level bits here
@@ -51,51 +57,66 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
       system.stateVersion = 4;
     };
+    # ---------------------- helpers ----------------------
+    mkDarwin = { name, extraModules ? [ ] }:
+      nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { user = currentUser; };
+        modules = [
+          darwinBase
+          ./hosts/${name}.nix
+          # Home Manager
+          home-manager.darwinModules.home-manager 
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { user = currentUser; };
+            home-manager.users.${currentUser} = import ./home/default.nix;
+          }
+        ] ++ extraModules;
+      };
+
+    mkLinux = { name, system }:
+      home-manager.lib.homeManagerConfiguration 
+      {
+        pkgs = pkgsFor system;
+        extraSpecialArgs = { user = currentUser; };
+        modules = [
+          { home.username = currentUser; home.homeDirectory = "/home/${currentUser}"; }
+          ./home/default.nix
+          ./hosts/${name}.nix
+        ];
+      };  
   in
   {
-    # ---------------------- macOS: egghead ----------------------
-    darwinConfigurations.egghead = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        darwinBase
-        ./hosts/egghead.nix
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.pedro = import ./home/pedro.nix;
-        }
-      ];
-    };
+    ###########################
+    # macOS hosts (Darwin)
+    ###########################
 
-    # --------------- macOS: MX000KMQ0JNVHGW (work) ---------------
-    darwinConfigurations.MX000KMQ0JNVHGW = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        darwinBase
-        ./hosts/MX000KMQ0JNVHGW.nix
+    darwinConfigurations.going-merry = 
+      mkDarwin { 
+        name = "going-merry"; 
+      };
 
-        # Host-specific adds (merge with base; don't overwrite)
-        ({ lib, pkgs, ... }: {
-          environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
-          homebrew.brews = lib.mkAfter [ "codex" ];  # Codex CLI via Homebrew formula
-        })
-
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.portizmonast = import ./home/pedro.nix;
-        }
-      ];
-    };
-
-    # ------------------- Arch Linux (HM-only) -------------------
-    homeConfigurations."pedro@arch" = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgsFor "x86_64-linux"; # switch to aarch64 if needed
-      modules = [
-        { home.username = "pedro"; home.homeDirectory = "/home/pedro"; }
-        ./home/pedro.nix
-        ./hosts/linux-arch.nix
-      ];
-    };
+    darwinConfigurations.thousand-sunny = 
+      mkDarwin { 
+        name = "thousand-sunny";
+        extraModules = [
+          # Host-specific packages (merges with default)
+          ({ lib, pkgs, ... }: {
+            environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
+            homebrew.brews = lib.mkAfter [ "codex" ];  # Codex CLI via Homebrew formula
+          })
+        ];
+      };
+    ###########################
+    # linux hosts
+    ###########################
+    
+    homeConfigurations."polar-tang" = 
+      mkLinux { 
+        name = "polar-tang";
+        system = "x86_64-linux";
+      };
   };
 }
