@@ -46,9 +46,10 @@
         taps  = [ "homebrew/cask" ];
         brews = [ "mas" ];
         casks = [
-          "visual-studio-code"
-          "obsidian"
+          "brave-browser"
           "ghostty"
+          "obsidian"
+          "visual-studio-code"
         ];
         onActivation = { autoUpdate = true; cleanup = "zap"; };
       };
@@ -106,6 +107,7 @@
           ({ lib, pkgs, ... }: {
             environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
             homebrew.brews = lib.mkAfter [ "codex" ];  # Codex CLI via Homebrew formula
+            homebrew.casks = lib.mkAfter [ "notion" ]; #Notion
           })
         ];
       };
