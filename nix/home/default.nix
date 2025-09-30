@@ -27,12 +27,25 @@ in
     bat ripgrep fzf
     nodejs_24           # npm included
     rustup              # cargo via rustup under ~/.cargo
-    ghostty
+    #ghostty            #Currently broken, will use homebrew cask in the meantime
   ] ++ lib.optionals isLinux [
     wl-clipboard
   ];
 
   xdg.configFile."starship".source =  ../../starship;
+  xdg.configFile."ghostty/config".text =  ''
+    # Look & Feel
+    theme = catppuccin-mocha
+    font-family = "JetBrains Mono"
+    background-opacity = 0.85
+
+    # Nice to Have
+    window-decoration = true
+    confirm-close-surface = false
+
+    #Keybindings
+    keybind = ctrl+shift+r reload-config
+  '';
 
   # Global Ruff defaults (used when a project has no local config)
   xdg.configFile."ruff/ruff.toml".text = ''
