@@ -51,6 +51,7 @@
           "brave-browser"
           "obsidian"
           "visual-studio-code"
+          "ghostty"
         ];
         onActivation = { autoUpdate = true; cleanup = "zap"; };
       };
