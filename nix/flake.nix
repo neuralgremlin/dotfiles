@@ -46,7 +46,6 @@
       # Homebrew managed by nix-darwin. Hosts can extend lists with mkAfter.
       homebrew = {
         enable = true;
-        taps  = [ "homebrew/cask" ];
         brews = [ "mas" ];
         casks = [
           "brave-browser"
