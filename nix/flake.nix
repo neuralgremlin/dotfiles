@@ -65,7 +65,7 @@
         system = "aarch64-darwin";
         specialArgs = { user = currentUser; };
         modules = [
-          (args: darwinBase (args // { user = currentUser; }))
+          darwinBase
           ./hosts/${name}.nix
           # Home Manager
           home-manager.darwinModules.home-manager 
