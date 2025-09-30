@@ -63,7 +63,7 @@
     mkDarwin = { name, extraModules ? [ ] }:
       nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = { user = currentUser; self = self; };
+        specialArgs = { user = currentUser; };
         modules = [
           darwinBase
           ./hosts/${name}.nix
@@ -72,7 +72,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { user = currentUser; self = self; };
+            home-manager.extraSpecialArgs = { user = currentUser; };
             home-manager.users.${currentUser} = import ./home/default.nix;
           }
         ] ++ extraModules;
@@ -82,7 +82,7 @@
       home-manager.lib.homeManagerConfiguration 
       {
         pkgs = pkgsFor system;
-        extraSpecialArgs = { user = currentUser; self = self; };
+        extraSpecialArgs = { user = currentUser; };
         modules = [
           { home.username = currentUser; home.homeDirectory = "/home/${currentUser}"; }
           ./home/default.nix
