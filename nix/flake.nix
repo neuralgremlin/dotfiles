@@ -49,7 +49,6 @@
         brews = [ "mas" ];
         casks = [
           "brave-browser"
-          "ghostty"
           "obsidian"
           "visual-studio-code"
         ];
