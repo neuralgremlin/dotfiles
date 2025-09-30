@@ -64,15 +64,13 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-
-    loginExtra = "";
     
     #OPTIONAL: Make `brew` available in shells on macOS if not handled via nix-darwin
-    #loginExtra = lib.optionalString isDarwin ''
-    #  if [ -x /opt/homebrew/bin/brew ]; then
-    #    eval "$(/opt/homebrew/bin/brew shellenv)"
-    #  fi
-    #'';
+    loginExtra = lib.optionalString isDarwin ''
+      if [ -x /opt/homebrew/bin/brew ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+    '';
 
     initContent = ''
       eval "$(starship init zsh)"
