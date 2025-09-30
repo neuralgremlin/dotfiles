@@ -22,15 +22,15 @@
     pkgsFor = system: import nixpkgs { inherit system; config.allowUnfree = true; };
 
     # Shared macOS base; keep only true system-level bits here
-    darwinBase = { pkgs, ... }: {
-      services.nix-daemon.enable = true;
+    darwinBase = { pkgs, user, ... }: {
+      nix.enable = true;
 
-      nix = {
-        settings.experimental-features = [ "nix-command" "flakes" ];
-        gc = { automatic = true; options = "--delete-older-than 7d"; };
-        optimise.automatic = true;
-      };
-
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      nix.gc = { automatic = true; options = "--delete-older-than 7d"; };
+      nix.optimise.automatic = true;
+    
+      system.primaryUser = user;
+      
       # System-level tools (user CLIs live in Home Manager to avoid duplication)
       environment.systemPackages = with pkgs; [
         colima
@@ -38,7 +38,8 @@
       ];
 
       programs.zsh.enable = true;
-      security.pam.enableSudoTouchIdAuth = true;
+      
+      security.pam.services.sudo_local.touchIdAuth = true;
 
       # Homebrew managed by nix-darwin. Hosts can extend lists with mkAfter.
       homebrew = {
@@ -64,7 +65,7 @@
         system = "aarch64-darwin";
         specialArgs = { user = currentUser; };
         modules = [
-          darwinBase
+          (args: darwinBase (args // { user = currentUser; }))
           ./hosts/${name}.nix
           # Home Manager
           home-manager.darwinModules.home-manager 
