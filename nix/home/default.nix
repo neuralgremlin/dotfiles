@@ -31,7 +31,7 @@ in
     wl-clipboard
   ];
 
-  xdg.configFile."starship".source = ../starship;
+  xdg.configFile."starship".source =  ../../starship;
 
   # Global Ruff defaults (used when a project has no local config)
   xdg.configFile."ruff/ruff.toml".text = ''
@@ -88,6 +88,6 @@ in
   programs.tmux = {
     enable = true;
     terminal = "screen-256color";
-    extraConfig = builtins.readFile ../tmux/tmux.conf;
+    extraConfig = builtins.readFile ../../tmux/tmux.conf;
   };
 }
