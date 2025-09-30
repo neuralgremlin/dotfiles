@@ -2,7 +2,7 @@
   description = "My macOS (nix-darwin) + Arch Linux (HM-only) flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05-darwin";
     nix-darwin.url = "github:nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
