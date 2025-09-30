@@ -23,11 +23,13 @@
 
     # Shared macOS base; keep only true system-level bits here
     darwinBase = { pkgs, user, ... }: {
-      nix.enable = true;
 
-      nix.settings.experimental-features = [ "nix-command" "flakes" ];
-      nix.gc = { automatic = true; options = "--delete-older-than 7d"; };
-      nix.optimise.automatic = true;
+      #Since we are using Determinate Nix, niz darwin should not manage it
+      nix.enable = false;
+
+      #nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      #nix.gc = { automatic = true; options = "--delete-older-than 7d"; };
+      #nix.optimise.automatic = true;
     
       system.primaryUser = user;
       
