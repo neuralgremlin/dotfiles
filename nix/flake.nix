@@ -73,6 +73,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "hm-bak";
             home-manager.extraSpecialArgs = { user = currentUser; };
             home-manager.users.${currentUser} = import ./home/default.nix;
           }
