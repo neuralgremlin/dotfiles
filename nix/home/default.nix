@@ -44,7 +44,7 @@ in
     confirm-close-surface = false
 
     #Keybindings
-    keybind = ctrl+shift+r=reload-config
+    keybind = ctrl+shift+r=reload_config
   '';
 
   # Global Ruff defaults (used when a project has no local config)
