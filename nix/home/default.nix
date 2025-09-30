@@ -35,7 +35,7 @@ in
   xdg.configFile."starship".source =  ../../starship;
   xdg.configFile."ghostty/config".text =  ''
     # Look & Feel
-    theme = catppuccin-mocha
+    theme = "Catppuccin Mocha"
     font-family = "JetBrains Mono"
     background-opacity = 0.85
 
