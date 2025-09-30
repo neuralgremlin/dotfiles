@@ -31,8 +31,6 @@ in
     wl-clipboard
   ];
 
-  home.backupFileExtension = "hm-bak";
-
   xdg.configFile."starship".source =  ../../starship;
 
   # Global Ruff defaults (used when a project has no local config)
