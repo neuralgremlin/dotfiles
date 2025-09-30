@@ -27,6 +27,7 @@ in
     bat ripgrep fzf
     nodejs_24           # npm included
     rustup              # cargo via rustup under ~/.cargo
+    ghostty
   ] ++ lib.optionals isLinux [
     wl-clipboard
   ];
