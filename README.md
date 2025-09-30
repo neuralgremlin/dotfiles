@@ -1,3 +1,10 @@
 # dotfiles
 dotfiles for my machines
-error: Failed assertions: - The option definition services.nix-daemon.enable' in <unknown-file>' no longer has any effect; please remove it. nix-darwin now manages nix-daemon unconditionally when nix.enable is on. - The option definition security.pam.enableSudoTouchIdAuth' in <unknown-file>' no longer has any effect; please remove it. This option has been renamed to security.pam.services.sudo_local.touchIdAuth for consistency with NixOS. - Previously, some nix-darwin options applied to the user running darwin-rebuild. As part of a long‐term migration to make nix-darwin focus on system‐wide activation and support first‐class multi‐user setups, all system activation now runs as root, and these options instead apply to the system.primaryUser user. You currently have the following primary‐user‐requiring options set: * homebrew.enable * system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled * system.defaults.dock.autohide * system.defaults.finder.AppleShowAllExtensions * system.defaults.screencapture.location To continue using these options, set system.primaryUser to the name of the user you have been using to run darwin-rebuild. If you run into any unexpected issues with the migration, please open an issue at <https://github.com/nix-darwin/nix-darwin/issues/new> and include as much information as possible.
+
+
+Replace HOSTNAME with the name of the nix host you are trying to config
+```shell
+sudo -H --preserve-env=USER,SUDO_USER \
+nix run nix-darwin/nix-darwin-25.05#darwin-rebuild \
+-- switch --impure --flake .#[HOSTNAME]
+```
