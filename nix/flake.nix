@@ -52,6 +52,7 @@
           "obsidian"
           "visual-studio-code"
           "ghostty"
+          "bitwarden"
         ];
         onActivation = { autoUpdate = true; cleanup = "zap"; };
       };
@@ -109,7 +110,7 @@
           # Host-specific packages (merges with default)
           ({ lib, pkgs, ... }: {
             environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
-            homebrew.brews = lib.mkAfter [ "codex" ];  # Codex CLI via Homebrew formula
+            homebrew.brews = lib.mkAfter [ "codex" "cdktf"];
             homebrew.casks = lib.mkAfter [ "notion" ]; #Notion
           })
         ];
