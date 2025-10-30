@@ -110,8 +110,8 @@
           # Host-specific packages (merges with default)
           ({ lib, pkgs, ... }: {
             environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
-            homebrew.brews = lib.mkAfter [ "codex" "cdktf"];
-            homebrew.casks = lib.mkAfter [ "notion" ]; #Notion
+            homebrew.brews = lib.mkAfter [ "cdktf"];
+            homebrew.casks = lib.mkAfter [ "codex" "notion" ]; #Notion
           })
         ];
       };
