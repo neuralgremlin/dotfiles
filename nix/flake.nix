@@ -48,11 +48,12 @@
         enable = true;
         brews = [ "mas" ];
         casks = [
+          "bitwarden"
           "brave-browser"
+          "ghostty"
+          "git-credential-manager"
           "obsidian"
           "visual-studio-code"
-          "ghostty"
-          "bitwarden"
         ];
         onActivation = { autoUpdate = true; cleanup = "zap"; };
       };
