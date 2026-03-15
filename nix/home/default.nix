@@ -7,7 +7,7 @@ in
   home.stateVersion = "24.05"; # fine to keep; bump later only if you want HM’s new defaults
 
   home.sessionVariables = {
-    EDITOR = "code";
+    EDITOR = "zed";
     STARSHIP_CONFIG = "${config.xdg.configHome}/starship/starship.toml";
     # UV_PYTHON_PREFERENCE = "managed";
     # UV_VENV_IN_PROJECT = "1";
@@ -22,11 +22,15 @@ in
 
   # User-scoped CLIs (shared across macOS & Arch)
   home.packages = with pkgs; [
-    uv
-    git jq fd
-    bat ripgrep fzf
-    nodejs_24           # npm included
+    bat
+    bun
+    git
+    jq
+    fd
+    fzf
+    ripgrep
     rustup              # cargo via rustup under ~/.cargo
+    uv
     #ghostty            #Currently broken, will use homebrew cask in the meantime
   ] ++ lib.optionals isLinux [
     wl-clipboard
@@ -64,7 +68,7 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    
+
     #OPTIONAL: Make `brew` available in shells on macOS if not handled via nix-darwin
     loginExtra = lib.optionalString isDarwin ''
       if [ -x /opt/homebrew/bin/brew ]; then

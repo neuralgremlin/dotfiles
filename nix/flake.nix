@@ -30,9 +30,9 @@
       #nix.settings.experimental-features = [ "nix-command" "flakes" ];
       #nix.gc = { automatic = true; options = "--delete-older-than 7d"; };
       #nix.optimise.automatic = true;
-    
+
       system.primaryUser = user;
-      
+
       # System-level tools (user CLIs live in Home Manager to avoid duplication)
       environment.systemPackages = with pkgs; [
         colima
@@ -40,20 +40,25 @@
       ];
 
       programs.zsh.enable = true;
-      
+
       security.pam.services.sudo_local.touchIdAuth = true;
 
       # Homebrew managed by nix-darwin. Hosts can extend lists with mkAfter.
       homebrew = {
         enable = true;
-        brews = [ "mas" ];
+        brews = [
+          "mas"
+          "gh"
+        ];
         casks = [
           "bitwarden"
           "brave-browser"
+          "codex-app"
           "ghostty"
           "git-credential-manager"
           "obsidian"
-          "visual-studio-code"
+          "zed"
+
         ];
         onActivation = { autoUpdate = true; cleanup = "zap"; };
       };
@@ -71,7 +76,7 @@
           darwinBase
           ./hosts/${name}.nix
           # Home Manager
-          home-manager.darwinModules.home-manager 
+          home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -83,7 +88,7 @@
       };
 
     mkLinux = { name, system }:
-      home-manager.lib.homeManagerConfiguration 
+      home-manager.lib.homeManagerConfiguration
       {
         pkgs = pkgsFor system;
         extraSpecialArgs = { user = currentUser; };
@@ -92,36 +97,36 @@
           ./home/default.nix
           ./hosts/${name}.nix
         ];
-      };  
+      };
   in
   {
     ###########################
     # macOS hosts (Darwin)
     ###########################
 
-    darwinConfigurations.going-merry = 
-      mkDarwin { 
-        name = "going-merry"; 
+    darwinConfigurations.going-merry =
+      mkDarwin {
+        name = "going-merry";
       };
 
-    darwinConfigurations.thousand-sunny = 
-      mkDarwin { 
+    darwinConfigurations.thousand-sunny =
+      mkDarwin {
         name = "thousand-sunny";
         extraModules = [
           # Host-specific packages (merges with default)
           ({ lib, pkgs, ... }: {
             environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
             homebrew.brews = lib.mkAfter [ "cdktf"];
-            homebrew.casks = lib.mkAfter [ "codex" "notion" ]; #Notion
+            homebrew.casks = lib.mkAfter [ "notion" ]; #Notion
           })
         ];
       };
     ###########################
     # linux hosts
     ###########################
-    
-    homeConfigurations."polar-tang" = 
-      mkLinux { 
+
+    homeConfigurations."polar-tang" =
+      mkLinux {
         name = "polar-tang";
         system = "x86_64-linux";
       };
