@@ -4,11 +4,10 @@ let
   isLinux  = pkgs.stdenv.isLinux;
 in
 {
-  home.stateVersion = "24.05"; # fine to keep; bump later only if you want HM’s new defaults
+  home.stateVersion = "25.11"; # fine to keep; bump later only if you want HM’s new defaults
 
   home.sessionVariables = {
     EDITOR = "zed";
-    STARSHIP_CONFIG = "${config.xdg.configHome}/starship/starship.toml";
     # UV_PYTHON_PREFERENCE = "managed";
     # UV_VENV_IN_PROJECT = "1";
   };
@@ -16,8 +15,6 @@ in
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
     "${config.home.homeDirectory}/.cargo/bin"
-  ] ++ lib.optionals isDarwin [
-    "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
   ];
 
   # User-scoped CLIs (shared across macOS & Arch)
@@ -37,7 +34,7 @@ in
     wl-clipboard
   ];
 
-  xdg.configFile."starship".source =  ../../starship;
+
   xdg.configFile."ghostty/config".text =  ''
     # Look & Feel
     theme = "Catppuccin Mocha"
@@ -63,6 +60,7 @@ in
 
   programs.home-manager.enable = true;
   programs.starship.enable = true;
+  xdg.configFile."starship".source =  ../../starship;
 
   programs.zsh = {
     enable = true;

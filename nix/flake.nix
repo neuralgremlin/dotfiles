@@ -35,7 +35,7 @@
 
       # System-level tools (user CLIs live in Home Manager to avoid duplication)
       environment.systemPackages = with pkgs; [
-        colima
+        #colima
         docker docker-compose docker-credential-helpers
       ];
 
