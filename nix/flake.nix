@@ -49,6 +49,7 @@
         brews = [
           "mas"
           "gh"
+          "uv"
         ];
         casks = [
           "bitwarden"

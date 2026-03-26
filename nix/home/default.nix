@@ -27,7 +27,7 @@ in
     fzf
     ripgrep
     rustup              # cargo via rustup under ~/.cargo
-    uv
+    #uv                 #Need Newer version than the one in Nixpkgs
     ffmpeg
     #ghostty            #Currently broken, will use homebrew cask in the meantime
   ] ++ lib.optionals isLinux [
