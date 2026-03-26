@@ -60,7 +60,7 @@ in
 
   programs.home-manager.enable = true;
   programs.starship.enable = true;
-  targets.darwin.linkApps.enable = false;
+  #targets.darwin.linkApps.enable = false; #might need it when migrating HM versions
   xdg.configFile."starship".source =  ../../starship;
 
   programs.zsh = {
