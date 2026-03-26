@@ -60,6 +60,7 @@ in
 
   programs.home-manager.enable = true;
   programs.starship.enable = true;
+  targets.darwin.linkApps.enable = false;
   xdg.configFile."starship".source =  ../../starship;
 
   programs.zsh = {
