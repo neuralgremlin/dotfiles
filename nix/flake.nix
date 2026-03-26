@@ -53,6 +53,8 @@
         casks = [
           "bitwarden"
           "brave-browser"
+          "codex"
+          "dbeaver-community"
           "ghostty"
           "git-credential-manager"
           "obsidian"
