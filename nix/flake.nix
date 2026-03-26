@@ -53,7 +53,6 @@
         casks = [
           "bitwarden"
           "brave-browser"
-          "codex-app"
           "ghostty"
           "git-credential-manager"
           "obsidian"
@@ -107,6 +106,13 @@
     darwinConfigurations.going-merry =
       mkDarwin {
         name = "going-merry";
+        extraModules = [
+          # Host-specific packages (merges with default)
+          ({ lib, pkgs, ... }: {
+            homebrew.brews = lib.mkAfter [ "imagemagick"];
+            homebrew.casks = lib.mkAfter [ "codex-app" ]; #Blocked By ZScaler for now
+          })
+        ];
       };
 
     darwinConfigurations.thousand-sunny =

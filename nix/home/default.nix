@@ -31,6 +31,7 @@ in
     ripgrep
     rustup              # cargo via rustup under ~/.cargo
     uv
+    ffmpeg
     #ghostty            #Currently broken, will use homebrew cask in the meantime
   ] ++ lib.optionals isLinux [
     wl-clipboard
