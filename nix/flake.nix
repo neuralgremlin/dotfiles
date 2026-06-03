@@ -49,12 +49,14 @@
         brews = [
           "mas"
           "gh"
+          "postgresql"
           "uv"
         ];
         casks = [
           "bitwarden"
           "brave-browser"
           "codex"
+          "codex-app"
           "dbeaver-community"
           "ghostty"
           "git-credential-manager"
@@ -113,7 +115,7 @@
           # Host-specific packages (merges with default)
           ({ lib, pkgs, ... }: {
             homebrew.brews = lib.mkAfter [ "imagemagick"];
-            homebrew.casks = lib.mkAfter [ "codex-app" ]; #Blocked By ZScaler for now
+            #homebrew.casks = lib.mkAfter [ "codex-app" ]; #Blocked By ZScaler for now
           })
         ];
       };
@@ -125,7 +127,10 @@
           # Host-specific packages (merges with default)
           ({ lib, pkgs, ... }: {
             environment.systemPackages = lib.mkAfter [ pkgs.awscli2 ];
-            #homebrew.brews = lib.mkAfter [ "cdktf"];
+            homebrew.brews = lib.mkAfter [
+              "libomp"
+              #"cdktf"
+            ];
             homebrew.casks = lib.mkAfter [ "notion" ]; #Notion
           })
         ];
