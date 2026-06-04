@@ -64,7 +64,7 @@
           "zed"
 
         ];
-        onActivation = { autoUpdate = true; cleanup = "zap"; };
+        onActivation = { autoUpdate = true; upgrade = true; cleanup = "none"; };
       };
 
       system.configurationRevision = self.rev or self.dirtyRev or null;
