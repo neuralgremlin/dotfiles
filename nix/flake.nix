@@ -51,6 +51,7 @@
           "gh"
           "postgresql"
           "uv"
+          "marp-cli"
         ];
         casks = [
           "bitwarden"
