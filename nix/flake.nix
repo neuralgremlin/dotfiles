@@ -56,6 +56,7 @@
         casks = [
           "bitwarden"
           "brave-browser"
+          "bruno"
           "codex"
           "codex-app"
           "dbeaver-community"

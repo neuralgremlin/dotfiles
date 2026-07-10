@@ -25,11 +25,13 @@ in
     jq
     fd
     fzf
+    nodejs
     ripgrep
     rustup              # cargo via rustup under ~/.cargo
     #uv                 #Need Newer version than the one in Nixpkgs
     ffmpeg
     #ghostty            #Currently broken, will use homebrew cask in the meantime
+    kubectl
   ] ++ lib.optionals isLinux [
     wl-clipboard
   ];
